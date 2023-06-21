@@ -13,29 +13,24 @@ const {
 //         Rutas para renderizar vistas
 // ==========================================
 
-
+// Obtener todas las reservas
 router.get('/', (req, res) => {
     res.render('index');
 });
 
+// editar
 router.get('/reserva/editar/:id', (req, res) => {
 
     const id_reserva = req.params.id;
     res.render('reserva/editar_reserva', { id: id_reserva });
 });
 
-router.get('/reserva/crear', (req, res) => {
-  res.render('crearreserva');
-});
 
 
-// Obtener todas las reservas
-router.get('/reserva', (req, res) => {
-    res.render('reserva/index');
-});
+
 
 // Formulario para crear una reserva
-router.get('/reserva/crear', (req, res) => {
+router.get('/reserva/crearreserva', (req, res) => {
     res.render('reserva/crear_reserva');
 });
 
