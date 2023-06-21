@@ -61,23 +61,23 @@ ctrlReservas.obtenerreserva = async (req, res) => {
 
 // Ctrl para crear una reserva
 ctrlReservas.crearreserva = async (req, res) => {
-    const { titulo, descripcion } = req.body;
+    const { nombre, fecha } = req.body;
 
     try {
-        const tarea = await Tarea.create({
-            titulo,
-            descripcion,
+        const reserva = await reserva.create({
+            nombre,
+            fecha,
             usuarioId: req.usuario.id
         });
 
-        if (!tarea) {
+        if (!reserva) {
             throw ({
                 status: 400,
-                message: 'No se pudo crear la tarea'
+                message: 'No se pudo crear la reserva'
             })
         }
 
-        return res.json(tarea);
+        return res.json(reserva);
     } catch (error) {
         console.log(error);
         return res.status(error.status || 500).json(error.message || 'Error interno del servidor');
@@ -87,12 +87,12 @@ ctrlReservas.crearreserva = async (req, res) => {
 // Ctrl para actualizar una reserva
 ctrlReservas.actualizarreserva = async (req, res) => {
     const { id } = req.params;
-    const { titulo, descripcion } = req.body;
+    const { nombre, fecha } = req.body;
     
     try {
         const reservaActualizada = await Tarea.update({
-            titulo,
-            descripcion
+            nombre,
+           fecha
         }, {
             where: {
                 id,

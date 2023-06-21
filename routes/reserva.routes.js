@@ -20,12 +20,12 @@ router.get('/', (req, res) => {
 
 router.get('/reserva/editar/:id', (req, res) => {
 
-    const tareaId = req.params.id;
-    res.render('reserva/editar_reserva', { id: reservaId });
+    const id_reserva = req.params.id;
+    res.render('reserva/editar_reserva', { id: id_reserva });
 });
 
 router.get('/reserva/crear', (req, res) => {
-  res.render('reserva/crear_reserva');
+  res.render('crearreserva');
 });
 
 
